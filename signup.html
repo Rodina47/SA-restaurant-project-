@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Create Account</h2>
+
+    <!-- رسالة فوق الفورم -->
+    <p id="message" style="text-align:center; margin-bottom:15px; font-weight:600;"></p>
+
+    <form id="signupForm">
+        <div class="input-group">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <label>Full Name</label>
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email" required>
+            <label>Email</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password" required>
+            <label>Password</label>
+        </div>
+
+        <button type="submit" class="btn">Sign Up</button>
+
+        <p class="redirect">Already have an account? 
+           <a href="login.html">Login</a>
+        </p>
+    </form>
+</div>
+
+<script>
+const signupForm = document.getElementById("signupForm");
+const message = document.getElementById("message");
+
+signupForm.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const name = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if(name === "" || email === "" || password === ""){
+        message.style.color = "#ff4c4c";
+        message.textContent = "Error: All fields are required!";
+        return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailPattern.test(email)){
+        message.style.color = "#ff4c4c";
+        message.textContent = "Error: Please enter a valid email!";
+        return;
+    }
+
+    if(password.length < 6){
+        message.style.color = "#ff4c4c";
+        message.textContent = "Error: Password must be at least 6 characters!";
+        return;
+    }
+
+    localStorage.setItem("user", JSON.stringify({name, email, password}));
+
+    message.style.color = "#00ff7f";
+    message.textContent = "Registration Successful!";
+    signupForm.reset();
+});
+
+// مسح الرسالة عند الكتابة
+const inputs = signupForm.querySelectorAll('input');
+inputs.forEach(input => {
+    input.addEventListener('input', () => {
+        message.textContent = "";
+    });
+});
+</script>
+
+</body>
+</html>
