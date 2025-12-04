@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="reservation-card">
+      <h2>Reserve Your Table</h2>
+
+      <div class="menu-tables-link-container">
+    <p style="margin-bottom: 10px; color: #666;">Plan your visit:</p>
+    <a href="menu.html" target="_blank" class="btn-menu">📄 View Menu</a>
+    <a href="tables.html" target="_blank" class="btn-tables">🪑 View Tables</a>
+</div>
+
+<form action="success.html">
+    <div class="row">
+        <div class="form-group">
+            <label>Guests</label>
+            <input type="number" min="1" max="20" value="2">
+        </div>
+        
+        <div class="form-group">
+            <label>Table No. (Optional)</label>
+            <input type="number" placeholder="e.g. 05">
+        </div>
+    </div>
+
+
+      <form action="#">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Enter your full name" required />
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="010-xxxx-xxxx" required />
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" required />
+          </div>
+          <div class="form-group">
+            <label>Time</label>
+            <input type="time" required />
+          </div>
+        </div>
+
+        
+
+        <div class="form-group">
+          <label>Preference</label>
+          <select>
+            <option>Indoors</option>
+            <option>Outdoors </option>
+            <option>MainHall</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Pre-order Food (Optional)</label>
+          <textarea
+            rows="3"
+            placeholder="Example: 1x Grilled Salmon, 2x Caesar Salad..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Confirm Booking</button>
+      </form>
+    </div>
+  </body>
+</html>
