@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Admin Login</h2>
+
+    <p id="message" style="text-align:center; margin-bottom:15px; font-weight:600;"></p>
+
+    <form id="adminForm">
+        <div class="input-group">
+            <input type="email" id="adminEmail" placeholder="Admin Email" required>
+            <label>Admin Email</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="adminPass" placeholder="Password" required>
+            <label>Password</label>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        <p class="redirect">
+            <a href="login.html">Back to User Login</a>
+        </p>
+    </form>
+</div>
+
+<script>
+const form = document.getElementById('adminForm');
+const message = document.getElementById('message');
+
+const adminEmail = "admin@gmail.com";
+const adminPassword = "Admin123";
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('adminEmail').value;
+    const password = document.getElementById('adminPass').value;
+
+    if(email === adminEmail && password === adminPassword){
+        message.textContent = "Valid";
+        message.style.color = "#00ff7f";
+        setTimeout(() => {
+            window.location.href = "admin-dashboard.html";
+        }, 500);
+    } else {
+        message.textContent = "Error: Incorrect email or password";
+        message.style.color = "#ff4c4c";
+    }
+});
+
+// مسح الرسالة عند الكتابة
+const inputs = form.querySelectorAll('input');
+inputs.forEach(input => {
+    input.addEventListener('input', () => {
+        message.textContent = "";
+    });
+});
+</script>
+
+</body>
+</html>

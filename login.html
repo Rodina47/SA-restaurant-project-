@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Welcome</h2>
+
+    <p id="message" style="text-align:center; margin-bottom:15px; font-weight:600;"></p>
+
+    <form id="loginForm">
+        <div class="input-group">
+            <input type="email" id="userEmail" placeholder="Email" required>
+            <label>Email</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="userPass" placeholder="Password" required>
+            <label>Password</label>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        <p class="redirect">
+            Don’t have an account? <a href="signup.html">Sign Up</a>
+        </p>
+
+        <button type="button" class="admin-btn" onclick="window.location.href='admin-login.html'">
+            Open as Admin
+        </button>
+    </form>
+</div>
+
+<script>
+const loginForm = document.getElementById('loginForm');
+const message = document.getElementById('message');
+
+loginForm.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const emailInput = document.getElementById('userEmail').value.trim();
+    const passwordInput = document.getElementById('userPass').value;
+
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if(!savedUser){
+        message.textContent = "Error: No account found. Please Sign Up first.";
+        message.style.color = "#ff4c4c";
+        return;
+    }
+
+    if(emailInput === savedUser.email && passwordInput === savedUser.password){
+        message.textContent = "Valid";
+        message.style.color = "#00ff7f";
+    } else {
+        message.textContent = "Error: Invalid email or password";
+        message.style.color = "#ff4c4c";
+    }
+});
+
+// مسح الرسالة عند الكتابة
+const inputs = loginForm.querySelectorAll('input');
+inputs.forEach(input => {
+    input.addEventListener('input', () => {
+        message.textContent = "";
+    });
+});
+</script>
+
+</body>
+</html>
