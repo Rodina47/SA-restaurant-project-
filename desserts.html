@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Desserts</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="menu-page">
+
+<div class="top-bar">
+<a class="back" href="menu.html">⬅ Menu</a>
+<a class="cart-btn" href="cart.html">🛒 Cart</a>
+</div>
+
+<h2>Desserts Menu</h2>
+
+<div class="menu-grid">
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/cake.jpg">
+<div class="item-content">
+<h3>Cake</h3>
+<p>Chocolate Cake</p>
+<p class="price">40 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Cake',40)">Add</button>
+</div>
+</div>
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/donuts.jpg">
+<div class="item-content">
+<h3>Donuts</h3>
+<p>Sweet Donuts</p>
+<p class="price">35 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Donuts',35)">Add</button>
+</div>
+</div>
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/Brownie.jpg">
+<div class="item-content">
+<h3>Brownie</h3>
+<p>Sweet Brownie with ice cream</p>
+<p class="price">60 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Brownie',60)">Add</button>
+</div>
+</div>
+
+
+</div>
+</div>
+
+<script>
+function selectItem(el){
+document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+el.classList.add('active');
+}
+
+function addToCart(e,name,price){
+e.stopPropagation();
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push({name,price});
+localStorage.setItem("cart",JSON.stringify(cart));
+alert(name+" added");
+}
+</script>
+
+</body>
+</html>

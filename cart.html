@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="menu-page">
+
+<a class="back" href="menu.html">⬅ Menu</a>
+<h2>Your Cart</h2>
+
+<div id="cart"></div>
+<h3 id="total"></h3>
+
+<button class="cart-btn" onclick="clearCart()">Clear Cart</button>
+<button class="cart-btn" onclick="confirmOrder()">Confirm Order</button>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let div = document.getElementById("cart");
+let total = 0;
+
+function showCart(){
+div.innerHTML = "";
+total = 0;
+
+cart.forEach((item,index)=>{
+total += item.price;
+div.innerHTML += `
+<div class="cart-item">
+<span>${item.name}</span>
+<span>${item.price} EGP</span>
+<button onclick="removeItem(${index})">❌</button>
+</div>`;
+});
+
+document.getElementById("total").innerText="Total: "+total+" EGP";
+}
+
+function removeItem(i){
+cart.splice(i,1);
+localStorage.setItem("cart",JSON.stringify(cart));
+showCart();
+}
+
+function clearCart(){
+if(confirm("Clear cart?")){
+localStorage.removeItem("cart");
+cart=[];
+showCart();
+}
+}
+
+function confirmOrder(){
+if(cart.length===0){alert("Cart is empty");return;}
+alert("✅ Order Confirmed!");
+localStorage.removeItem("cart");
+cart=[];
+showCart();
+}
+
+showCart();
+</script>
+
+</body>
+</html>
