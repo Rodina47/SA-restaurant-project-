@@ -1,0 +1,305 @@
+menu.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="title">
+<h1>Delicious Food Made With Love</h1>
+
+</div>
+
+<div class="cards">
+<a href="food.html" class="card food"><span>Food</span></a>
+<a href="drinks.html" class="card drinks"><span>Drinks</span></a>
+<a href="desserts.html" class="card desserts"><span>Desserts</span></a>
+</div>
+
+</body>
+</html>
+
+food.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="menu-page">
+
+<div class="top-bar">
+<a class="back" href="menu.html">⬅ Menu</a>
+<a class="cart-btn" href="cart.html">🛒 Cart</a>
+</div>
+
+<h2>Food Menu</h2>
+
+<div class="menu-grid">
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/pizza.jpg">
+<div class="item-content">
+<h3>Pizza</h3>
+<p>Cheese pizza</p>
+<p class="price">80 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Pizza',80)">Add</button>
+</div>
+</div>
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/burger.jpg">
+<div class="item-content">
+<h3>Burger</h3>
+<p>Beef Burger</p>
+<p class="price">70 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Burger',70)">Add</button>
+</div>
+</div>
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/pasta.jpg">
+<div class="item-content">
+<h3>Pasta</h3>
+<p>alfredo pasta </p>
+<p class="price">110 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Pasta',110)">Add</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+function selectItem(el){
+document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+el.classList.add('active');
+}
+
+function addToCart(e,name,price){
+e.stopPropagation();
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push({name,price});
+localStorage.setItem("cart",JSON.stringify(cart));
+alert(name+" added");
+}
+</script>
+
+</body>
+</html>
+drinks.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Drinks</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="menu-page">
+
+<div class="top-bar">
+<a class="back" href="menu.html">⬅ Menu</a>
+<a class="cart-btn" href="cart.html">🛒 Cart</a>
+</div>
+
+<h2>Drinks Menu</h2>
+
+<div class="menu-grid">
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/juice (1).jpg">
+<div class="item-content">
+<h3>Juice</h3>
+<p>Fresh Juice</p>
+<p class="price">30 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Juice',30)">Add</button>
+</div>
+</div>
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/coffe.jpg">
+<div class="item-content">
+<h3>Coffee</h3>
+<p>Hot Coffee</p>
+<p class="price">25 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Coffee',25)">Add</button>
+</div>
+</div>
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/milkshake.jpg">
+<div class="item-content">
+<h3>milkshake</h3>
+<p>Hot coffee With milk foam</p>
+<p class="price">80 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'milkshake',80)">Add</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+function selectItem(el){
+document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+el.classList.add('active');
+}
+
+function addToCart(e,name,price){
+e.stopPropagation();
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push({name,price});
+localStorage.setItem("cart",JSON.stringify(cart));
+alert(name+" added");
+}
+</script>
+
+</body>
+</html>
+desserts.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Desserts</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="menu-page">
+
+<div class="top-bar">
+<a class="back" href="menu.html">⬅ Menu</a>
+<a class="cart-btn" href="cart.html">🛒 Cart</a>
+</div>
+
+<h2>Desserts Menu</h2>
+
+<div class="menu-grid">
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/cake.jpg">
+<div class="item-content">
+<h3>Cake</h3>
+<p>Chocolate Cake</p>
+<p class="price">40 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Cake',40)">Add</button>
+</div>
+</div>
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/donuts.jpg">
+<div class="item-content">
+<h3>Donuts</h3>
+<p>Sweet Donuts</p>
+<p class="price">35 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Donuts',35)">Add</button>
+</div>
+</div>
+
+<div class="item" onclick="selectItem(this)">
+<img src="images/Brownie.jpg">
+<div class="item-content">
+<h3>Brownie</h3>
+<p>Sweet Brownie with ice cream</p>
+<p class="price">60 EGP</p>
+<button class="add-btn" onclick="addToCart(event,'Brownie',60)">Add</button>
+</div>
+</div>
+
+
+</div>
+</div>
+
+<script>
+function selectItem(el){
+document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+el.classList.add('active');
+}
+
+function addToCart(e,name,price){
+e.stopPropagation();
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push({name,price});
+localStorage.setItem("cart",JSON.stringify(cart));
+alert(name+" added");
+}
+</script>
+
+</body>
+</html>
+cart.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="menu-page">
+
+<a class="back" href="menu.html">⬅ Menu</a>
+<h2>Your Cart</h2>
+
+<div id="cart"></div>
+<h3 id="total"></h3>
+
+<button class="cart-btn" onclick="clearCart()">Clear Cart</button>
+<button class="cart-btn" onclick="confirmOrder()">Confirm Order</button>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let div = document.getElementById("cart");
+let total = 0;
+
+function showCart(){
+div.innerHTML = "";
+total = 0;
+
+cart.forEach((item,index)=>{
+total += item.price;
+div.innerHTML += `
+<div class="cart-item">
+<span>${item.name}</span>
+<span>${item.price} EGP</span>
+<button onclick="removeItem(${index})">❌</button>
+</div>`;
+});
+
+document.getElementById("total").innerText="Total: "+total+" EGP";
+}
+
+function removeItem(i){
+cart.splice(i,1);
+localStorage.setItem("cart",JSON.stringify(cart));
+showCart();
+}
+
+function clearCart(){
+if(confirm("Clear cart?")){
+localStorage.removeItem("cart");
+cart=[];
+showCart();
+}
+}
+
+function confirmOrder(){
+if(cart.length===0){alert("Cart is empty");return;}
+alert("✅ Order Confirmed!");
+localStorage.removeItem("cart");
+cart=[];
+showCart();
+}
+
+showCart();
+</script>
+
+</body>
+</html>
