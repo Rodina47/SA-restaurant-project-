@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #3c0c03; }
+    .fb-box { background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ddd; }
+    .name { font-weight: bold; color: brown; }
+    h1{color: #ddd;}
+    .date { font-size: 12px; color: gray; margin-right: 8px; }
+    .stars { color: rgb(233, 228, 200); }
+  </style>
+</head>
+<body>
+
+  <h1>Users Feedback</h1>
+  <div id="feedbackContainer"></div>
+
+  <script>
+    function loadFeedbacks() {
+      const data = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+      const container = document.getElementById("feedbackContainer");
+
+      if (data.length === 0) {
+        container.innerHTML = "<p>لا يوجد فيدباك.</p>";
+        return;
+      }
+
+      container.innerHTML = "";
+
+      data.forEach(fb => {
+        const div = document.createElement("div");
+        div.className = "fb-box";
+
+        div.innerHTML = `
+          <div>
+            <span class="name">${fb.userName}</span>
+            <span class="date">${new Date(fb.date).toLocaleDateString()}</span>
+          </div>
+          <div class="stars">${"★".repeat(fb.rating)}${"☆".repeat(5 - fb.rating)}</div>
+          <p>${fb.comment}</p>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+    loadFeedbacks();
+  </script>
+
+</body>
+</html>

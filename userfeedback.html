@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #3c0c03;
+      margin: 0;
+      height: 100vh;
+
+      /* أهم جزء — توسيط المحتوى */
+      display: flex;
+      justify-content: center; 
+      align-items: center;
+    }
+
+    .box {
+      background: white;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      padding: 25px;
+      width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #3c0c03;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #bbb;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      background: #b23;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #a01222;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Rate Us</h2>
+
+    <input id="name" placeholder="Name">
+    <input id="rating" type="number" max="5" min="1" placeholder="Rate From 1 To 5">
+    <textarea id="comment" rows="4" placeholder="Your Comment"></textarea>
+
+    <button onclick="sendFeedback()">Submit</button>
+  </div>
+
+  <script>
+    function sendFeedback() {
+      const name = document.getElementById('name').value.trim();
+      const rating = parseInt(document.getElementById('rating').value);
+      const comment = document.getElementById('comment').value.trim();
+
+      if (!name || !rating || !comment) {
+        alert("Please enter all required info");
+        return;
+      }
+
+      if (rating < 1 || rating > 5) {
+        alert("Rate must be from 1 to 5");
+        return;
+      }
+
+      const feedback = {
+        id: Date.now(),
+        userName: name,
+        rating: rating,
+        comment: comment,
+        date: new Date().toISOString()
+      };
+
+      let list = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+      list.push(feedback);
+      localStorage.setItem("feedbacks", JSON.stringify(list));
+
+      alert("Your feedback has been submitted!");
+
+      document.getElementById('name').value = "";
+      document.getElementById('rating').value = "";
+      document.getElementById('comment').value = "";
+    }
+  </script>
+
+</body>
+</html>
