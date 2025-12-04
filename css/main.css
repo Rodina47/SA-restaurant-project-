@@ -2,16 +2,9 @@
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background: #4b0000; /* Dark red background */
+    background: #4b0000;
     color: white;
-}
-
-/* SECTION TITLES */
-.section-title {
-    text-align: center;
-    font-size: 32px;
-    margin-top: 60px;
-    color: #ff4c4c;
+    text-align: center; /* يوسطن كل الكلام */
 }
 
 /* NAVBAR */
@@ -51,69 +44,108 @@ body {
 
 /* HERO */
 .hero {
-    text-align: center;
-    padding: 120px 20px;
-    background: url('https://via.placeholder.com/1500x700') center/cover;
-    background-blend-mode: multiply;
-    background-color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.hero h1 {
+.hero-fullscreen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
+
+.hero-text h1 {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 50px;
+    font-size: 60px;
     color: #ff4c4c;
-    margin-bottom: 20px;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+    margin: 0;
+}
+/* Hero Text Animation */
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    animation: fadeInMove 2s forwards; /* مدة التحريك 2 ثانية */
 }
 
-.hero-subtitle {
-    font-size: 24px;
-    margin: 20px 0;
+@keyframes fadeInMove {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%); /* يتحرك شوية من فوق */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%); /* يوصل للوسط */
+    }
+}
+
+
+/* HISTORY */
+.history-container {
+    max-width: 1000px;
+    margin: 50px auto; /* مسافة من كل الجهات */
+    padding: 0 20px;
+}
+
+.history-text {
+    font-size: 22px;
     color: #fff3f3;
+    line-height: 1.6;
 }
 
-.btn-hero {
-    display: inline-block;
-    padding: 15px 30px;
-    background: #ff4c4c;
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    border-radius: 8px;
-    margin-bottom: 30px;
-}
-
-.hero-image {
-    width: 400px;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-/* Category Header */
+/* BEST DISHES */
 .category-header {
     font-size: 36px;
-    text-align: center;
     color: #ff4c4c;
-    margin: 40px 0 20px 0;
+    margin: 50px 0 30px 0;
     font-family: 'Cinzel Decorative', serif;
 }
 
-/* Dish List (Vertical) */
 .dishes-list {
     display: flex;
-    flex-direction: column; /* تخليهم تحت بعض */
-    gap: 30px;
+    flex-direction: column;
+    gap: 40px;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
-/* Dish Box */
 .dish-box {
+    display: flex;
+    gap: 20px;
     background: #330000;
     padding: 30px;
     border-radius: 15px;
-    width: 60%; /* كبير للعرض */
+    width: 80%;
     text-align: left;
     color: #fff;
+}
+
+.dish-image {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.dish-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* توسط كل النصوص عمودياً */
 }
 
 .dish-name {
@@ -133,30 +165,56 @@ body {
     color: #ff4c4c;
 }
 
-
-/* HISTORY */
-.history-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    margin: 50px 0;
+/* FOOTER / ABOUT / CONTACT */
+.about-container {
+    background: #330000;
+    padding: 50px 20px;
+    border-radius: 15px;
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
 }
 
-.history-text {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 20px;
+.about-container h2 {
+    font-size: 36px;
+    color: #ff4c4c;
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.map-footer {
+    width: 100%;
     max-width: 500px;
-    color: #fff3f3;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
 /* FEEDBACK */
 .feedback-panel {
     background: #330000;
-    padding: 40px;
+    padding: 50px 20px;
     border-radius: 15px;
-    text-align: center;
     margin: 50px auto;
     max-width: 800px;
     color: #ffcccc;
+}
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hover effect on dishes */
+.dish-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Optional: change cursor on hover */
+.dish-box {
+    cursor: pointer;
 }
