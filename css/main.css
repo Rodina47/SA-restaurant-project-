@@ -1,69 +1,162 @@
 /* GENERAL */
 body {
-margin: 0;
-font-family: "Poppins", sans-serif;
-background: #4b0000; /* Dark red background */
-color: white;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #4b0000; /* Dark red background */
+    color: white;
 }
 
-
+/* SECTION TITLES */
 .section-title {
-text-align: center;
-font-size: 32px;
-margin-top: 60px;
-color: #ff4c4c;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 60px;
+    color: #ff4c4c;
 }
-
 
 /* NAVBAR */
 .navbar {
-background: #330000;
-padding: 15px 40px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-position: sticky;
-top: 0;
-z-index: 1000;
+    background: #330000;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-
 
 .logo {
-font-size: 28px;
-font-weight: bold;
-color: #ff4c4c;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff4c4c;
 }
-
 
 .nav-links {
-list-style: none;
-display: flex;
-gap: 25px;
+    list-style: none;
+    display: flex;
+    gap: 25px;
 }
-
 
 .nav-links li a {
-color: white;
-text-decoration: none;
-font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
 }
-
 
 .nav-links li a:hover {
-color: #ff4c4c;
-transition: 0.3s;
+    transform: scale(1.2);
+    transition: transform 0.3s;
 }
-
 
 /* HERO */
 .hero {
-text-align: center;
-padding: 120px 20px;
-background: url('https://via.placeholder.com/1500x700') center/cover;
-background-blend-mode: multiply;
-background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    padding: 120px 20px;
+    background: url('https://via.placeholder.com/1500x700') center/cover;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 50px;
+    color: #ff4c4c;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    margin: 20px 0;
+    color: #fff3f3;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #ff4c4c;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    width: 400px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Category Header */
+.category-header {
+    font-size: 36px;
+    text-align: center;
+    color: #ff4c4c;
+    margin: 40px 0 20px 0;
+    font-family: 'Cinzel Decorative', serif;
+}
+
+/* Dish List (Vertical) */
+.dishes-list {
+    display: flex;
+    flex-direction: column; /* تخليهم تحت بعض */
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+/* Dish Box */
+.dish-box {
+    background: #330000;
+    padding: 30px;
+    border-radius: 15px;
+    width: 60%; /* كبير للعرض */
+    text-align: left;
+    color: #fff;
+}
+
+.dish-name {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.dish-description {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.dish-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4c4c;
 }
 
 
-.hero h1 {
-font-size: 50px;}
+/* HISTORY */
+.history-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 50px 0;
+}
+
+.history-text {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 20px;
+    max-width: 500px;
+    color: #fff3f3;
+}
+
+/* FEEDBACK */
+.feedback-panel {
+    background: #330000;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+    color: #ffcccc;
+}

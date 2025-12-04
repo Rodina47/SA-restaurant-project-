@@ -1,84 +1,80 @@
-<!-- home.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Restaurant Home</title>
-<link rel="stylesheet" href="/css/main.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Life Restaurant</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">Header Life</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#best-dishes">Menu</a></li>
+            <li><a href="#history">About</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+    </nav>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-<div class="logo">Red Flame</div>
-<ul class="nav-links">
-<li><a href="#">Home</a></li>
-<li><a href="#">Menu</a></li>
-<li><a href="#">Book Table</a></li>
-<li><a href="#">Recommendations</a></li>
-<li><a href="#">History</a></li>
-<li><a href="#">Best Picks</a></li>
-<li><a href="#feedback">Feedback</a></li>
-</ul>
-</nav>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+        <h1>Welcome to Header Life</h1>
+        <p class="hero-subtitle">Press here to get into unlimited tastes</p>
+        <a href="#best-dishes" class="btn-hero">See Menu</a>
+        <img src="https://via.placeholder.com/400x300" alt="Dish Image" class="hero-image">
+    </section>
 
+<section id="best-dishes">
+    <h2 class="section-title">Best Dishes</h2>
 
-<!-- HERO -->
-<section class="hero">
-<h1>Welcome to Red Flame</h1>
-<p>Where Taste Meets Elegance</p>
-<button class="btn">View Menu</button>
-<button class="btn btn-outline">Book a Table</button>
+    <!-- Category Header -->
+    <h3 class="category-header">Plates</h3>
+
+    <!-- Dish List -->
+    <div class="dishes-list">
+        <div class="dish-box">
+            <h4 class="dish-name">Grilled Chicken</h4>
+            <p class="dish-description">Tender grilled chicken with herbs and spices.</p>
+            <p class="dish-price">$12.99</p>
+        </div>
+
+        <div class="dish-box">
+            <h4 class="dish-name">Beef Steak</h4>
+            <p class="dish-description">Juicy steak cooked to perfection with sides.</p>
+            <p class="dish-price">$18.50</p>
+        </div>
+
+        <div class="dish-box">
+            <h4 class="dish-name">Veggie Pasta</h4>
+            <p class="dish-description">Delicious pasta with fresh seasonal vegetables.</p>
+            <p class="dish-price">$10.99</p>
+        </div>
+    </div>
 </section>
 
+    <!-- HISTORY SECTION -->
+    <section id="history">
+        <h2 class="section-title">Our Story</h2>
+        <div class="history-container">
+            <img src="https://via.placeholder.com/400x300" alt="Restaurant Image">
+            <p class="history-text">Here goes the story of your restaurant in a fancy font. Share your journey, passion for food, and experience with customers.</p>
+        </div>
+    </section>
 
-<!-- SERVICES -->
-<section class="services">
-<h2 class="section-title">Our Services</h2>
-<div class="services-container">
-<div class="service-card">
-<h3>Book a Table</h3>
-<p>Reserve your spot easily.</p>
-<button class="btn">Book Now</button>
-</div>
-<div class="service-card">
-<h3>View Menu</h3>
-<p>Discover delicious dishes.</p>
-<button class="btn">Check Menu</button>
-</div>
-</div>
-</section>
+    <!-- FEEDBACK SECTION -->
+    <section id="feedback">
+        <h2 class="section-title">Customer Feedback</h2>
+        <div class="feedback-panel">
+            <p>"Amazing food and service!" - Customer Name</p>
+            <p>"Best dining experience ever!" - Customer Name</p>
+        </div>
+    </section>
 
-
-<!-- RECOMMENDATIONS -->
-<section class="recommendations">
-<h2 class="section-title">Recommendations</h2>
-<div class="card-container">
-<div class="food-card">
-<img src="https://via.placeholder.com/300" />
-<h3>Special Pasta</h3>
-<p>⭐⭐⭐⭐⭐</p>
-</div>
-<div class="food-card">
-<img src="https://via.placeholder.com/300" />
-<h3>Grilled Steak</h3>
-<p>⭐⭐⭐⭐⭐</p>
-</div>
-<div class="food-card">
-<img src="https://via.placeholder.com/300" />
-<h3>Chicken Platter</h3>
-<p>⭐⭐⭐⭐⭐</p>
-</div>
-</div>
-</section>
-
-
-<!-- FEEDBACK PANEL -->
-<section class="feedback" id="feedback">
-<h2 class="section-title">Leave Feedback</h2>
-
-
-<form class="feedback-form">
+</body>
 </html>
