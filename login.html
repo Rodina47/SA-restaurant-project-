@@ -57,6 +57,9 @@ loginForm.addEventListener('submit', function(e){
     if(emailInput === savedUser.email && passwordInput === savedUser.password){
         message.textContent = "Valid";
         message.style.color = "#00ff7f";
+        setTimeout(() => {
+            window.location.href = "main.html";
+        }, 500);
     } else {
         message.textContent = "Error: Invalid email or password";
         message.style.color = "#ff4c4c";
