@@ -26,7 +26,7 @@ html {
 .logo {
     font-size: 30px;
     font-weight: bold;
-    color: #d4a373;
+    color: #ff4c4c;
 }
 
 .nav-links {
@@ -43,7 +43,7 @@ html {
 }
 
 .nav-links li a:hover {
-    color: #d4a373;
+    color: #ff4c4c;
     transform: scale(1.15);
 }
 
@@ -81,8 +81,9 @@ html {
 .hero-text h1 {
     font-family: 'Cinzel Decorative', serif;
     font-size: 70px;
-    color: #d4a373;
-    text-shadow: 4px 4px 20px rgba(116, 0, 0, 0.966);
+    color: #ff4c4c;
+    text-shadow: 4px 4px 20px rgba(0,0,0,0.7);
+    margin-bottom: 15px;
 }
 
 /* hero fade animation */
@@ -105,7 +106,7 @@ html {
 .history-title {
     font-size: 45px;
     font-weight: 700;
-    color: #D4AF37;
+    color: #ff4c4c;
     margin-bottom: 25px;
     font-family: "Cinzel Decorative", serif;
 }
@@ -118,59 +119,49 @@ html {
     margin: auto;
 }
 
-/* TITLES - GOLD THEME */
-.section-title,
+/* BEST DISHES */
+.section-title {
+    font-size: 45px;
+    font-weight: bold;
+    color: #D4AF37;
+    margin-top: 50px;
+}
+
 .category-header {
-    color: #D4AF37 !important;
+    font-size: 36px;
+    color: #ff4c4c;
+    margin: 50px 0 30px 0;
     font-family: 'Cinzel Decorative', serif;
 }
 
-.section-title {
-    font-size: 45px;
-    margin-top: 50px;
-    font-weight: bold;
-}
-
-.category-header {
-    font-size: 30px;
-    margin: 40px 0 20px;
-}
-
-/* DISHES LIST */
 .dishes-list {
-    width: 80%;
-    margin: 0 auto 70px;
     display: flex;
     flex-direction: column;
-    gap: 45px;
+    gap: 40px;
     align-items: center;
+    margin-bottom: 60px;
 }
 
 .dish-box {
     display: flex;
-    align-items: center;
-    gap: 25px;
-    background: #1a0000;
-    padding: 25px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 850px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    border: 1px solid rgba(212,175,55,0.2);
+    gap: 20px;
+    background: #1f0000;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    text-align: left;
+    color: #fff;
     transition: 0.3s ease;
 }
 
 .dish-box:hover {
-    transform: scale(1.03);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    transform: scale(1.04);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
 .dish-image {
-    width: 220px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 15px;
-    border: 2px solid #D4AF37;
+    width: 250px;
+    border-radius: 10px;
 }
 
 .dish-info {
@@ -178,21 +169,22 @@ html {
 }
 
 .dish-name {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
-    color: #FFDFAF;
+    margin-bottom: 10px;
+    color: #ffb3b3;
 }
 
 .dish-description {
-    font-size: 17px;
-    color: #FFE9C7;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffdddd;
 }
 
 .dish-price {
     font-size: 22px;
     font-weight: bold;
-    color: #D4AF37;
-    margin-top: 10px;
+    color: #ff4c4c;
 }
 
 /* FEEDBACK */
