@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header Life Restaurant</title>
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/header.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -15,51 +17,51 @@
     <nav class="navbar">
         <div class="logo">Header Life</div>
         <ul class="nav-links">
-            <li><a href="main.html">Home</a></li>
+            <li><a href="#hero">Home</a></li>
             <li><a href="menu.html">Menu</a></li>
-            <li><a href="reservation.html">reservation</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="afeedback.html">Feedback</a></li>
-            <li><a href="login.html">login</a></li>
-            <li><a href="signup.html">signup</a></li>
-
+            <li><a href="reservation.html">Reservation</a></li>
+            <li><a href="#history">About</a></li>
+            <li><a href="userfeedback.html">Feedback</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Signup</a></li>
         </ul>
     </nav>
 
     <!-- HERO SECTION -->
     <section id="hero" class="hero">
         <div class="hero-overlay"></div>
-        <img src="images/Best-Restaurants-in-Sacramento.jpg" alt="Hero Image" class="hero-fullscreen">
-        <div class="hero-text">
-            <h1>Welcome to Header Life</h1>
+        <div class="hero-vignette"></div> <!-- Added vignette for softer effect -->
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Elegant Restaurant Interior" class="hero-fullscreen"> <!-- Changed to a more elegant, high-quality restaurant image from Unsplash -->
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Header Life</h1>
+            <p class="hero-subtitle" id="typing-subtitle"></p>
+            <a href="#best-dishes" class="hero-btn">Explore Our Menu</a>
         </div>
     </section>
 
-<!-- HISTORY / STORY SECTION -->
-<section id="history" class="history-section">
-    <div class="history-content">
-        <h2 class="history-title">Our Story</h2>
-
-        <p class="history-text">
-            Founded with a passion for authentic flavors and unforgettable experiences, 
-            Header Life began as a small family vision and grew into a place where food 
-            meets comfort.  
-            <br><br>
-            Every dish we serve is crafted with care, inspired by recipes passed down 
-            through generations — blending tradition with modern taste.  
-            <br><br>
-            We believe that great food brings people together, and our story continues 
-            with every guest who becomes part of our journey.
-        </p>
-    </div>
-</section>
-
+    <!-- HISTORY / STORY SECTION -->
+    <section id="history" class="history-section">
+        <div class="history-content">
+            <h2 class="history-title">Our Story</h2>
+            <p class="history-text">
+                Founded with a passion for authentic flavors and unforgettable experiences, 
+                Header Life began as a small family vision and grew into a place where food 
+                meets comfort.  
+                <br><br>
+                Every dish we serve is crafted with care, inspired by recipes passed down 
+                through generations — blending tradition with modern taste.  
+                <br><br>
+                We believe that great food brings people together, and our story continues 
+                with every guest who becomes part of our journey.
+            </p>
+        </div>
+    </section>
 
     <!-- BEST DISHES SECTION -->
     <section id="best-dishes">
         <h2 class="section-title">our best dishes</h2>
-        <h3 class="category-header">main meals </h3>
-
+        <h3 class="category-header">main meals</h3>
+        <div class="dishes-list">
             <div class="dish-box">
                 <img src="images/pasta.jpg" alt="Alfredo" class="dish-image">
                 <div class="dish-info">
@@ -80,27 +82,152 @@
                     <p class="dish-price">60 EGP</p>
                 </div>
             </div>
+        </div>
 
-            <h3 class="category-header">drinks</h3>
-
+        <h3 class="category-header">drinks</h3>
+        <div class="dishes-list">
             <div class="dish-box">
                 <img src="images/coffe.jpg" alt="Coffee" class="dish-image">
                 <div class="dish-info">
                     <h4 class="dish-name">Hot Coffee</h4>
-                    <p class="dish-description">hot Coffee .</p>
+                    <p class="dish-description">Hot Coffee.</p>
                     <p class="dish-price">$18.50</p>
                 </div>
             </div>
+        </div>
+
+        <!-- SHOW MENU BUTTON -->
+        <div class="show-menu-container">
+            <a href="menu.html" class="show-menu-btn">Show Full Menu</a>
+        </div>
+    </section>
+
+    <!-- ACTION CARDS SECTION -->
+    <section id="action-cards" class="action-cards-section">
+        <h2 class="section-title">Get Started</h2>
+        <div class="cards-container">
+            <div class="action-card">
+                <h3 class="card-title">Book Table Now</h3>
+                <p class="card-description">Reserve your spot for an unforgettable dining experience.</p>
+                <a href="reservation.html" class="card-btn">Book Now</a>
+            </div>
+            <div class="action-card">
+                <h3 class="card-title">Leave Feedback</h3>
+                <p class="card-description">Share your thoughts and help us improve.</p>
+                <a href="userfeedback.html" class="card-btn">Leave Feedback</a>
+            </div>
+            <div class="action-card">
+                <h3 class="card-title">Contact Us</h3>
+                <p class="card-description">Reach out for inquiries or special requests.</p>
+                <a href="mailto:info@headerlife.com" class="card-btn">Contact Us</a>
+            </div>
+        </div>
     </section>
 
     <!-- FEEDBACK SECTION -->
-    <section id="feedback">
+    <section id="feedback" class="feedback-section">
         <h2 class="section-title">Customer Feedback</h2>
-        <div class="feedback-panel">
-            <p>"Amazing food and service!" - Customer Name</p>
-            <p>"Best dining experience ever!" - Customer Name</p>
+        <div class="feedback-container">
+            <div class="feedback-card">
+                <div class="feedback-icon">“</div>
+                <p class="testimonial-text">"Amazing food and service! The Alfredo pasta was exquisite, and the atmosphere was perfect for a romantic dinner."</p>
+                <p class="testimonial-author">- Sarah Johnson</p>
+            </div>
+            <div class="feedback-card">
+                <div class="feedback-icon">“</div>
+                <p class="testimonial-text">"Best dining experience ever! The brownie dessert was heavenly, and the staff made us feel right at home."</p>
+                <p class="testimonial-author">- Michael Lee</p>
+            </div>
+            <div class="feedback-card">
+                <div class="feedback-icon">“</div>
+                <p class="testimonial-text">"Header Life is a hidden gem. The coffee was rich and flavorful, and the overall ambiance is unmatched."</p>
+                <p class="testimonial-author">- Emily Davis</p>
+            </div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="social-media">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="copyright">&copy; 2023 Header Life. All rights reserved.</p>
+    </div>
+</footer>
+
+    <!-- JavaScript for Enhancements -->
+    <script>
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Typing Effect for Hero Subtitle
+        const subtitle = document.getElementById('typing-subtitle');
+        const text = "Indulge in Authentic Flavors and Unforgettable Moments";
+        let index = 0;
+        function typeWriter() {
+            if (index < text.length) {
+                subtitle.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 1000); // Delay to start after title animation
+        });
+
+        // Smoother Parallax Effect on Hero Image
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const heroImage = document.querySelector('.hero-fullscreen');
+                    const scrollPosition = window.pageYOffset;
+                    heroImage.style.transform = `translateY(${scrollPosition * 0.2}px) scale(${1 + scrollPosition * 0.00005})`; // More subtle parallax
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Scroll-Triggered Fade-In Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for fade-in
+        document.querySelectorAll('.history-section, .dish-box, .feedback-panel, .action-card').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Enhanced Hover Effects for Dish Boxes
+        document.querySelectorAll('.dish-box').forEach(box => {
+            box.addEventListener('mouseenter', () => {
+                box.style.transform = 'scale(1.05) rotate(1deg)';
+            });
+            box.addEventListener('mouseleave', () => {
+                box.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
 
 </body>
 </html>

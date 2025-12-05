@@ -112,7 +112,7 @@ textarea:focus {
 }
 
 header {
-  background: #2c3e50;
+  background: #2b0000;
   color: white;
   padding: 30px;
   text-align: center;
@@ -252,7 +252,8 @@ input[type="radio"]:checked + .table-card {
 }
 
 .btn-confirm {
-  background-color: #27ae60;
+  background-color: #d4a373;
+;
   color: white;
   border: none;
   padding: 15px 50px;
@@ -260,12 +261,12 @@ input[type="radio"]:checked + .table-card {
   font-weight: bold;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+  box-shadow: 0 4px 15px rgba(124, 59, 28, 0.4);
   transition: 0.3s;
 }
 
 .btn-confirm:hover {
-  background-color: #219150;
+  background-color: #b18960;
 }
 .success-card {
   background: white;
