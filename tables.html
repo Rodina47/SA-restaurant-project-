@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Your Table</title>
+    <link rel="stylesheet" href="reservation.css" />
+  </head>
+  <body style="background-image: none">
+    <form action="reservation.html" method="get">
+      <header>
+        <h1 style="color: wheat; font-size: 30px">Select Your Table</h1>
+        <p style="color: wheat; font-size: 20px" class="subtitle">
+          Click on an available table to select it, then press Confirm.
+        </p>
+      </header>
+
+      <div class="zones-container">
+        <div class="zone">
+          <h2>Indoor</h2>
+
+          <label class="table-label">
+            <input type="radio" name="table" value="IN-01" />
+            <div class="table-card">
+              <img src="indoor1.jpeg" class="card-img" alt="Table" />
+              <div class="card-info">
+                <span class="table-id">ID: IN-01</span>
+                <span class="capacity">👤 2 People</span>
+                <span class="status-badge status-available">Available</span>
+              </div>
+            </div>
+          </label>
+
+          <div class="table-label disabled-card">
+            <div class="table-card">
+              <img src="indoor2.jpeg" class="card-img" alt="Table" />
+              <div class="card-info">
+                <span class="table-id">ID: IN-02</span>
+                <span class="capacity">👤 4 People</span>
+                <span class="status-badge status-occupied">Occupied</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zone">
+          <h2>Outdoor</h2>
+
+          <label class="table-label">
+            <input type="radio" name="table" value="OUT-01" />
+            <div class="table-card">
+              <img src="outdoor1.jpeg" class="card-img" alt="Table" />
+              <div class="card-info">
+                <span class="table-id">ID: OUT-01</span>
+                <span class="capacity">👤 2 People</span>
+                <span class="status-badge status-available">Available</span>
+              </div>
+            </div>
+          </label>
+
+          <label class="table-label">
+            <input type="radio" name="table" value="OUT-02" />
+            <div class="table-card">
+              <img src="outdoor2.jpeg" class="card-img" alt="Table" />
+              <div class="card-info">
+                <span class="table-id">ID: OUT-02</span>
+                <span class="capacity">👤 4 People</span>
+                <span class="status-badge status-available">Available</span>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div class="zone">
+          <h2>Main Hall</h2>
+
+          <div class="table-label disabled-card">
+            <div class="table-card">
+              <img src="mainhall1.jpeg" class="card-img" alt="Table" />
+              <div class="card-info">
+                <span class="table-id">ID: HALL-01</span>
+                <span class="capacity">👤 10 People</span>
+                <span class="status-badge status-reserved">Reserved</span>
+              </div>
+            </div>
+          </div>
+
+          <label class="table-label">
+            <input type="radio" name="table" value="HALL-02" />
+            <div class="table-card">
+              <img src="mainhall2.jpeg" class="card-img" alt="Table" />
+              <div class="card-info">
+                <span class="table-id">ID: HALL-02</span>
+                <span class="capacity">👤 4 People</span>
+                <span class="status-badge status-available">Available</span>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <button type="submit" class="btn-confirm">Confirm Selection</button>
+      </div>
+    </form>
+  </body>
+</html>
