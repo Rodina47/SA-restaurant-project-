@@ -331,6 +331,46 @@ html {
     transform: scale(1.05);
 }
 
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.contact-item i {
+    color: #D4AF37;
+    font-size: 20px;
+}
+
+.contact-item a {
+    color: #fce9ac;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-item a:hover {
+    color: #D4AF37;
+}
+
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-icons i {
+    font-size: 24px;
+    color: #D4AF37;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    transform: scale(1.2);
+}
+
+
 /* FOOTER */
 .footer {
     background: #1f0000;
