@@ -252,8 +252,7 @@ input[type="radio"]:checked + .table-card {
 }
 
 .btn-confirm {
-  background-color: #d4a373;
-;
+  background: #ffc942;
   color: white;
   border: none;
   padding: 15px 50px;
@@ -261,12 +260,14 @@ input[type="radio"]:checked + .table-card {
   font-weight: bold;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(124, 59, 28, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.493);
   transition: 0.3s;
 }
 
 .btn-confirm:hover {
-  background-color: #b18960;
+  background:#fcc029;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgb(0, 0, 0);
 }
 .success-card {
   background: white;
