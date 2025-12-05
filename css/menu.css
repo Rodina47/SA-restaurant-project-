@@ -6,9 +6,8 @@ body {
 }
 
 .title {
-    font-size: 30px;
+    font-size: 20px;
     color: #d4a373;
-    margin: 40px 0 20px 0;
     text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.692);
     font-family: 'Cinzel Decorative', serif;
 }
