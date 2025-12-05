@@ -2,88 +2,227 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>Feedback</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - Header Life</title>
+
+  <link rel="stylesheet" href="css/header.css">
+
+  <!-- Google Font for elegance -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     body {
-      font-family: sans-serif;
-      background: #3c0c03;
+      font-family: "Poppins", sans-serif;
+      background: #2b0000; /* Dark theme matching the site */
       margin: 0;
       height: 100vh;
-
-      /* أهم جزء — توسيط المحتوى */
       display: flex;
-      justify-content: center; 
+      justify-content: center;
       align-items: center;
+      color: white;
     }
 
     .box {
-      background: white;
-      padding-top: 60px;
-      padding-bottom: 60px;
-      padding: 25px;
-      width: 500px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      background: #1a0000; /* Darker box background */
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       text-align: center;
+      border: 1px solid rgba(255,215,0,0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
-      margin-bottom: 15px;
-      color: #3c0c03;
+      margin-bottom: 20px;
+      color: #FFD700; /* Gold color */
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      text-shadow: 2px 2px 10px rgba(143, 37, 37, 0.973);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #FFD700;
+      font-size: 18px;
     }
 
     input, textarea {
       width: 100%;
-      margin: 8px 0;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #bbb;
-      font-size: 15px;
+      margin: 0;
+      padding: 15px 15px 15px 45px; /* Space for icon */
+      border-radius: 10px;
+      border: 1px solid rgba(143, 37, 37, 0.973);
+      font-size: 16px;
+      background: #3a0000;
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #FFD700;
+      box-shadow: 0 0 10px rgba(143, 37, 37, 0.973);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #ffcccc;
     }
 
     button {
       width: 100%;
-      background: #b23;
-      color: white;
-      padding: 12px;
+      background: #ffc942;
+      color: #1f0000;
+      padding: 15px;
       border: none;
-      border-radius: 6px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 16px;
-      margin-top: 10px;
-      transition: 0.2s;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: 0.3s ease;
+      box-shadow: 0 5px 15px rgba(143, 37, 37, 0.973);
     }
 
     button:hover {
-      background: #a01222;
+      background:#d4b401d3;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgb(143, 37, 37);
+    }
+
+    .rating-stars {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .star {
+      font-size: 30px;
+      color: #fceea1;
+      cursor: pointer;
+      transition: 0.2s;
+      margin: 0 5px;
+    }
+
+    .star:hover, .star.active {
+      color: #ffc942;
+      transform: scale(1.2);
+    }
+
+    .success-message {
+      display: none;
+      color: #FFD700;
+      font-weight: bold;
+      margin-top: 20px;
+      animation: fadeIn 0.5s;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .box {
+        padding: 30px 20px;
+        max-width: 90%;
+      }
+      h2 {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
 <body>
 
+          <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">Header Life</div>
+        <ul class="nav-links">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="reservation.html">reservation</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="afeedback.html">Feedback</a></li>
+            <li><a href="login.html">login</a></li>
+            <li><a href="signup.html">signup</a></li>
+
+        </ul>
+    </nav>
+
   <div class="box">
-    <h2>Rate Us</h2>
+    <h2><i class="fas fa-star"></i> Rate Us</h2>
 
-    <input id="name" placeholder="Name">
-    <input id="rating" type="number" max="5" min="1" placeholder="Rate From 1 To 5">
-    <textarea id="comment" rows="4" placeholder="Your Comment"></textarea>
+    <div class="form-group">
+      <i class="fas fa-user"></i>
+      <input id="name" placeholder="Your Name" required>
+    </div>
 
-    <button onclick="sendFeedback()">Submit</button>
+    <div class="rating-stars" id="rating-stars">
+      <span class="star" data-value="1">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="5">★</span>
+    </div>
+    <input id="rating" type="hidden">
+
+    <div class="form-group">
+      <i class="fas fa-comment"></i>
+      <textarea id="comment" rows="4" placeholder="Your Comment" required></textarea>
+    </div>
+
+    <button onclick="sendFeedback()"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
+
+    <div class="success-message" id="success-message">Thank you for your feedback! We appreciate it.</div>
   </div>
 
   <script>
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const value = star.getAttribute('data-value');
+        ratingInput.value = value;
+        
+        // Update active stars
+        stars.forEach(s => s.classList.remove('active'));
+        for (let i = 0; i < value; i++) {
+          stars[i].classList.add('active');
+        }
+      });
+    });
+
     function sendFeedback() {
       const name = document.getElementById('name').value.trim();
       const rating = parseInt(document.getElementById('rating').value);
       const comment = document.getElementById('comment').value.trim();
 
-      if (!name || !rating || !comment) {
-        alert("Please enter all required info");
+      if (!name) {
+        alert("Please enter your name");
         return;
       }
 
-      if (rating < 1 || rating > 5) {
-        alert("Rate must be from 1 to 5");
+      if (!rating || rating < 1 || rating > 5) {
+        alert("Please select a rating from 1 to 5");
+        return;
+      }
+
+      if (!comment) {
+        alert("Please enter your comment");
         return;
       }
 
@@ -99,11 +238,18 @@
       list.push(feedback);
       localStorage.setItem("feedbacks", JSON.stringify(list));
 
-      alert("Your feedback has been submitted!");
+      // Show success message
+      const successMessage = document.getElementById('success-message');
+      successMessage.style.display = 'block';
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+      }, 3000);
 
+      // Clear form
       document.getElementById('name').value = "";
       document.getElementById('rating').value = "";
       document.getElementById('comment').value = "";
+      stars.forEach(s => s.classList.remove('active'));
     }
   </script>
 
