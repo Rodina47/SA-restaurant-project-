@@ -85,7 +85,7 @@ html {
     font-family: 'Cinzel Decorative', serif;
     font-size: 70px;
     color: #eeb881;
-    text-shadow: 4px 4px 20px rgb(116, 0, 0);
+    text-shadow: 4px 4px 20px rgb(54, 0, 0);
     margin-bottom: 20px;
     animation: textGlow 3s ease-in-out infinite alternate;
 }
@@ -126,8 +126,8 @@ html {
 }
 
 @keyframes textGlow {
-    0% { text-shadow: 4px 4px 20px rgba(116, 0, 0, 0.966); }
-    100% { text-shadow: 4px 4px 30px rgba(192, 97, 60, 0.8), 0 0 20px rgba(212, 175, 55, 0.5); }
+    0% { text-shadow: 4px 4px 20px rgba(43, 1, 1, 0.849); }
+    100% { text-shadow: 4px 4px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.5); }
 }
 
 /* HISTORY SECTION */
