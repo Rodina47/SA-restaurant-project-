@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/header.css">
   </head>
+
+
   <body>
 
         <!-- NAVBAR -->
@@ -94,4 +96,29 @@
       </form>
     </div>
   </body>
+
+  <script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let reservations = JSON.parse(localStorage.getItem("reservations") || "[]");
+
+    let newReservation = {
+        userName: document.querySelector("input[placeholder='Enter your full name']").value,
+        phone: document.querySelector("input[placeholder='010-xxxx-xxxx']").value,
+        guests: document.querySelector("input[min='1']").value,
+        tableName: document.querySelector("input[placeholder='e.g. 05']").value || "Not Selected",
+        date: document.querySelector("input[type='date']").value,
+        time: document.querySelector("input[type='time']").value,
+        note: document.querySelector("textarea").value
+    };
+
+    reservations.push(newReservation);
+    localStorage.setItem("reservations", JSON.stringify(reservations));
+
+    window.location.href = "success.html";
+});
+</script>
+
+
 </html>

@@ -7,9 +7,30 @@
     body { font-family: sans-serif; padding: 20px; background: #3c0c03; }
     .fb-box { background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ddd; }
     .name { font-weight: bold; color: brown; }
-    h1{color: #ddd;}
+    h1{margin-top: 70px;color: #dac8b9;text-align: center;}
     .date { font-size: 12px; color: gray; margin-right: 8px; }
     .stars { color: rgb(233, 228, 200); }
+
+      .back-btn {
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #D4AF37;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
   </style>
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
@@ -31,6 +52,8 @@
 
         </ul>
     </nav>
+
+    <a href="Adashboard.html" class="back-btn">← Back</a>
 
   <h1>Users Feedback</h1>
   <div id="feedbackContainer"></div>

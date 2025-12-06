@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Show User Reservations</title>
+    <link rel="stylesheet" href="css/header.css">
 
 <style>
   body {
@@ -12,6 +13,7 @@
   }
 
   h2 {
+    margin-top: 70px;
     color: #dac8b9;
     text-align: center;
     margin-bottom: 30px;
@@ -56,10 +58,48 @@
     margin-top: 20px;
     font-size: 18px;
   }
+
+    .back-btn {
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #D4AF37;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
 </style>
 </head>
 
 <body>
+
+          <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">Header Life</div>
+        <ul class="nav-links">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="reservation.html">reservation</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="userfeedback.html">Feedback</a></li>
+            <li><a href="login.html">login</a></li>
+            <li><a href="signup.html">signup</a></li>
+
+        </ul>
+    </nav>
+
+    <a href="Adashboard.html" class="back-btn">← Back</a>
 
 <h2>User Reservations</h2>
 
