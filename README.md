@@ -1,8 +1,8 @@
-# Social Media App - System Design & Analysis
+# Resturant Managment System - System Analysis & Design
 
 <img width="180" height="150" alt="Project Logo" src="https://github.com/user-attachments/assets/ca6ed4c5-a06c-4f4f-9107-78a9b172c436" align="right" />
 
-**Faculty of Computing and Artificial Intelligence**  
+**Faculty of Computer Science and Artificial Intelligence**  
 **Helwan University**
 
 **Course:** System Design and Analysis 1 (IS-351)  
