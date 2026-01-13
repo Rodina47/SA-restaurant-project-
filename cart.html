@@ -1,87 +1,381 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Cart</title>
-<link rel="stylesheet" href="css/menu.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/header.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout / Payment - Byte Bites</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/header.css">
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #2b0000;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: 60px;
+            margin: 0;
+            color: #333;
+        }
+        .checkout-card {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: "Cinzel Decorative", serif;
+        }
+        .cart-item, .form-group {
+            margin-bottom: 15px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            align-items: center;
+        }
+        .cart-item span {
+            font-weight: 500;
+        }
+        .cart-item .item-details {
+            flex: 1;
+        }
+        .cart-item .item-price {
+            font-weight: bold;
+            color: #e67e22;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #e67e22;
+            outline: none;
+            box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+        }
+        .btn-confirm {
+            width: 100%;
+            padding: 15px;
+            background-color: #e67e22;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .btn-confirm:hover {
+            background-color: #d35400;
+        }
+        .btn-confirm:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .total-price {
+            text-align: right;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #e67e22;
+        }
+        .card-info {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .checkout-card {
+                margin: 10px;
+                padding: 20px;
+            }
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
 
-        <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">Byte Bites</div>
-        <ul class="nav-links">
-            <li><a href="main.html">Home</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="reservation.html">reservation</a></li>
-            <li><a href="main.html#history">About</a></li>
-            <li><a href="userfeedback.html">Feedback</a></li>
-            <li><a href="login.html">login</a></li>
-            <li><a href="signup.html">signup</a></li>
+<nav class="navbar">
+    <div class="logo">Byte Bites</div>
+    <ul class="nav-links">
+        <li><a href="main.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="main.html#history">About</a></li>
+        <li><a href="userfeedback.html">Feedback</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Signup</a></li>
+    </ul>
+</nav>
 
-        </ul>
-    </nav>
+<div class="checkout-card">
+    <h2>Checkout / Payment</h2>
 
-<div class="menu-page">
+    <div id="cartItems"></div>
+    <div class="total-price">Total: <span id="totalPrice">0</span> EGP</div>
 
-<a class="back" href="menu.html">⬅ Menu</a>
-<h2>Your Cart</h2>
+    <div style="display:flex; justify-content: space-between; margin-bottom: 20px;">
+    <button type="button" class="btn-confirm" id="clearCartBtn" style="background:#c0392b;">Clear Cart</button>
+    <span></span> <!-- مسافة بين الزرين -->
+    </div>
 
-<div id="cart"></div>
-<h3 id="total"></h3>
+    <form id="checkoutForm">
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required>
+            <div class="error" id="nameError"></div>
+        </div>
 
-<button class="cart-btn" onclick="clearCart()">Clear Cart</button>
-<button class="cart-btn" onclick="confirmOrder()">Confirm Order</button>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="e.g., 010-1234-5678" required>
+            <div class="error" id="phoneError"></div>
+        </div>
 
+        <div class="form-group">
+            <label for="address">Delivery Address</label>
+            <textarea id="address" placeholder="Enter your full address" rows="3" required></textarea>
+            <div class="error" id="addressError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="specialInstructions">Special Instructions (Optional)</label>
+            <textarea id="specialInstructions" placeholder="Any special requests?" rows="2"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" required>
+                <option value="">Select Payment Method</option>
+                <option value="Cash">Cash on Delivery</option>
+                <option value="Visa">Credit/Debit Card</option>
+            </select>
+            <div class="error" id="paymentError"></div>
+        </div>
+
+        <div class="card-info" id="cardInfo">
+            <h3>Card Details</h3>
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                <div class="error" id="cardError"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expiry">Expiry Date</label>
+                    <input type="month" id="expiry" min="2023-01">
+                    <div class="error" id="expiryError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="password" id="cvv" placeholder="123" maxlength="4">
+                    <div class="error" id="cvvError"></div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-confirm" id="confirmBtn">Confirm Order</button>
+    </form>
+
+    <div class="success-message" id="successMessage">✅ Order confirmed! Redirecting...</div>
 </div>
 
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let div = document.getElementById("cart");
-let total = 0;
+    // Retrieve cart from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartDiv = document.getElementById("cartItems");
+    let total = 0;
 
-function showCart(){
-div.innerHTML = "";
-total = 0;
+function showCart() {
+    cartDiv.innerHTML = "";
+    total = 0;
 
-cart.forEach((item,index)=>{
-total += item.price;
-div.innerHTML += `
-<div class="cart-item">
-<span>${item.name}</span>
-<span>${item.price} EGP</span>
-<button onclick="removeItem(${index})">❌</button>
-</div>`;
+    if (cart.length === 0) {
+        cartDiv.innerHTML = "<p>Your cart is empty. <a href='menu.html'>Go back to menu</a></p>";
+        document.getElementById("confirmBtn").disabled = true;
+        return;
+    }
+
+    document.getElementById("confirmBtn").disabled = false;
+
+    cart.forEach((item, index) => {
+        const qty = item.qty || 1;
+        const itemTotal = item.price * qty;
+        total += itemTotal;
+        let div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `
+            <div class="item-details">${item.name} x${qty}</div>
+            <div class="item-price">${itemTotal} EGP <button onclick="removeItem(${index})" style="margin-left:10px; background:#e74c3c; color:white; border:none; padding:3px 7px; border-radius:4px; cursor:pointer;">❌</button></div>
+        `;
+        cartDiv.appendChild(div);
+    });
+
+    document.getElementById("totalPrice").innerText = total;
+}
+
+// إزالة عنصر واحد
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showCart();
+}
+
+// مسح الكارت كله
+document.getElementById("clearCartBtn").addEventListener("click", function() {
+    if (confirm("Are you sure you want to clear the cart?")) {
+        cart = [];
+        localStorage.removeItem("cart");
+        showCart();
+    }
 });
 
-document.getElementById("total").innerText="Total: "+total+" EGP";
-}
-
-function removeItem(i){
-cart.splice(i,1);
-localStorage.setItem("cart",JSON.stringify(cart));
 showCart();
-}
 
-function clearCart(){
-if(confirm("Clear cart?")){
-localStorage.removeItem("cart");
-cart=[];
-showCart();
-}
-}
 
-function confirmOrder(){
-if(cart.length===0){alert("Cart is empty");return;}
-alert("✅ Order Confirmed!");
-localStorage.removeItem("cart");
-cart=[];
-showCart();
-}
+    // Show card info if Visa is selected
+    document.getElementById("paymentMethod").addEventListener("change", function() {
+        const cardInfo = document.getElementById("cardInfo");
+        cardInfo.style.display = this.value === "Visa" ? "block" : "none";
+    });
 
-showCart();
+    // Format card number
+    document.getElementById("cardNumber").addEventListener("input", function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+        e.target.value = value.trim();
+    });
+
+    // Form validation and submission
+    document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        clearErrors();
+
+        const name = document.getElementById("fullName").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const paymentMethod = document.getElementById("paymentMethod").value;
+        const specialInstructions = document.getElementById("specialInstructions").value.trim();
+
+        let isValid = true;
+
+        if (!name) {
+            showError("nameError", "Full name is required.");
+            isValid = false;
+        }
+
+        const phoneRegex = /^01[0-2,5]\d{8}$/;
+        if (!phone || !phoneRegex.test(phone)) {
+            showError("phoneError", "Please enter a valid Egyptian phone number (e.g., 01012345678).");
+            isValid = false;
+        }
+
+        if (!address) {
+            showError("addressError", "Address is required.");
+            isValid = false;
+        }
+
+        if (!paymentMethod) {
+            showError("paymentError", "Please select a payment method.");
+            isValid = false;
+        }
+
+        if (paymentMethod === "Visa") {
+            const cardNumber = document.getElementById("cardNumber").value.replace(/\s/g, '');
+            const expiry = document.getElementById("expiry").value;
+            const cvv = document.getElementById("cvv").value;
+
+            if (!cardNumber || cardNumber.length < 13 || cardNumber.length > 19) {
+                showError("cardError", "Please enter a valid card number.");
+                isValid = false;
+            }
+
+            if (!expiry) {
+                showError("expiryError", "Expiry date is required.");
+                isValid = false;
+            }
+
+            if (!cvv || cvv.length < 3 || cvv.length > 4) {
+                showError("cvvError", "Please enter a valid CVV.");
+                isValid = false;
+            }
+        }
+
+        if (!isValid) return;
+
+        // Build order object
+        let order = {
+            fullName: name,
+            phone: phone,
+            address: address,
+            specialInstructions: specialInstructions,
+            paymentMethod: paymentMethod,
+            status: paymentMethod === "Visa" ? "Paid" : "Pending Payment",
+            items: cart,
+            total: total,
+            orderDate: new Date().toISOString()
+        };
+
+        // Save order to localStorage
+        let orders = JSON.parse(localStorage.getItem("menuOrders") || "[]");
+        orders.push(order);
+        localStorage.setItem("menuOrders", JSON.stringify(orders));
+
+        // Clear cart
+        localStorage.removeItem("cart");
+
+        // Show success message and redirect
+        document.getElementById("successMessage").style.display = "block";
+        setTimeout(() => {
+            window.location.href = "main.html"; // Redirect to home or order confirmation page
+        }, 2000);
+    });
+
+    function showError(id, message) {
+        document.getElementById(id).textContent = message;
+    }
+
+    function clearErrors() {
+        const errors = document.querySelectorAll(".error");
+        errors.forEach(error => error.textContent = "");
+    }
 </script>
 
 </body>

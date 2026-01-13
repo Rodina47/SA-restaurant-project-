@@ -1,87 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Food</title>
-<link rel="stylesheet" href="css/menu.css">
+<title>Desserts</title>
+<link rel="stylesheet" href="css/menuItems.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
 
-        <!-- NAVBAR -->
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="logo">Byte Bites</div>
         <ul class="nav-links">
             <li><a href="main.html">Home</a></li>
             <li><a href="menu.html">Menu</a></li>
-            <li><a href="reservation.html">reservation</a></li>
+            <li><a href="reservation.html">Reservation</a></li>
             <li><a href="main.html#history">About</a></li>
             <li><a href="userfeedback.html">Feedback</a></li>
-            <li><a href="login.html">login</a></li>
-            <li><a href="signup.html">signup</a></li>
-
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Signup</a></li>
         </ul>
     </nav>
 
-<div class="menu-page">
+    <div class="menu-page">
+        <div class="top-bar">
+            <a class="back" href="menu.html">⬅ Menu</a>
+            <a class="cart-btn" href="cart.html">🛒 Cart (<span id="cartCount">0</span>)</a>
+        </div>
 
-<div class="top-bar">
-<a class="back" href="menu.html">⬅ Menu</a>
-<a class="cart-btn" href="cart.html">🛒 Cart</a>
-</div>
+        <h2>food Menu</h2>
 
-<h2>Food Menu</h2>
+        <div class="menu-grid">
+            <div class="item" onclick="selectItem(this)">
+                <img src="images/pizza.jpg">
+                <div class="item-content">
+                <h3>Pizza</h3>
+                <p>Cheese pizza</p>
+                <p class="price">80 EGP</p>
+                    <div class="quantity-controls">
+                        <button onclick="changeQuantity(event, -1)">-</button>
+                        <span id="qty-Pizza">1</span>
+                        <button onclick="changeQuantity(event, 1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(event, 'Pizza', 80)">Add to Cart</button>
+                </div>
+            </div>
 
-<div class="menu-grid">
+            <div class="item" onclick="selectItem(this)">
+                <img src="images/burger.jpg">
+                <div class="item-content">
+                <h3>Burger</h3>
+                <p>Beef Burger</p>
+                <p class="price">70 EGP</p>
+                    <div class="quantity-controls">
+                        <button onclick="changeQuantity(event, -1)">-</button>
+                        <span id="qty-Burger">1</span>
+                        <button onclick="changeQuantity(event, 1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(event, 'Burger', 70)">Add to Cart</button>
+                </div>
+            </div>
 
-<div class="item" onclick="selectItem(this)">
-<img src="images/pizza.jpg">
-<div class="item-content">
-<h3>Pizza</h3>
-<p>Cheese pizza</p>
-<p class="price">80 EGP</p>
-<button class="add-btn" onclick="addToCart(event,'Pizza',80)">Add</button>
-</div>
-</div>
+            <div class="item" onclick="selectItem(this)">
+                <img src="images/pasta.jpg">
+                <div class="item-content">
+                <h3>Pasta</h3>
+                <p>alfredo pasta </p>
+                <p class="price">110 EGP</p>
+                    <div class="quantity-controls">
+                        <button onclick="changeQuantity(event, -1)">-</button>
+                        <span id="qty-Pasta">1</span>
+                        <button onclick="changeQuantity(event, 1)">+</button>
+                    </div>
+                    <button class="add-btn" onclick="addToCart(event, 'Pasta', 110)">Add to Cart</button>
+                </div>
+            </div>
 
-<div class="item" onclick="selectItem(this)">
-<img src="images/burger.jpg">
-<div class="item-content">
-<h3>Burger</h3>
-<p>Beef Burger</p>
-<p class="price">70 EGP</p>
-<button class="add-btn" onclick="addToCart(event,'Burger',70)">Add</button>
-</div>
-</div>
 
-<div class="item" onclick="selectItem(this)">
-<img src="images/pasta.jpg">
-<div class="item-content">
-<h3>Pasta</h3>
-<p>alfredo pasta </p>
-<p class="price">110 EGP</p>
-<button class="add-btn" onclick="addToCart(event,'Pasta',110)">Add</button>
-</div>
-</div>
+        </div>
+    </div>
 
-</div>
-</div>
+    <div class="notification" id="notification">Item added to cart!</div>
 
-<script>
-function selectItem(el){
-document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
-el.classList.add('active');
-}
+    <script>
+        let selectedItem = null;
 
-function addToCart(e,name,price){
-e.stopPropagation();
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-cart.push({name,price});
-localStorage.setItem("cart",JSON.stringify(cart));
-alert(name+" added");
-}
-</script>
+        function selectItem(el) {
+            document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+            el.classList.add('active');
+            selectedItem = el;
+        }
+
+        function changeQuantity(e, delta) {
+            e.stopPropagation();
+            const item = e.target.closest('.item');
+            const itemName = item.querySelector('h3').textContent;
+            const qtySpan = item.querySelector(`#qty-${itemName.replace(/\s+/g, ' ')}`);
+            let qty = parseInt(qtySpan.textContent);
+            qty = Math.max(1, qty + delta);
+            qtySpan.textContent = qty;
+        }
+
+        function addToCart(e, name, price) {
+            e.stopPropagation();
+            const item = e.target.closest('.item');
+            const qty = parseInt(item.querySelector(`#qty-${name.replace(/\s+/g, ' ')}`).textContent);
+            
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            
+            // Check if item already exists
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cart.push({ name, price, qty });
+            }
+            
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            
+            // Show notification
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000);
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        // Initialize cart count on load
+        updateCartCount();
+    </script>
 
 </body>
 </html>
