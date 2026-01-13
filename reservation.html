@@ -1,124 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table Reservation</title>
-    <link rel="stylesheet" href="css/reservation.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table Reservation</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css">
-  </head>
+  <link rel="stylesheet" href="css/reservation.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
 
+<body>
 
-  <body>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Byte Bites</div>
+  <ul class="nav-links">
+    <li><a href="main.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="reservation.html">Reservation</a></li>
+    <li><a href="main.html#history">About</a></li>
+    <li><a href="userfeedback.html">Feedback</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="signup.html">Signup</a></li>
+  </ul>
+</nav>
 
-        <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">Byte Bites</div>
-        <ul class="nav-links">
-            <li><a href="main.html">Home</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="reservation.html">reservation</a></li>
-            <li><a href="main.html#history">About</a></li>
-            <li><a href="userfeedback.html">Feedback</a></li>
-            <li><a href="login.html">login</a></li>
-            <li><a href="signup.html">signup</a></li>
+<div class="reservation-card">
+  <h2>Reserve Your Table</h2>
 
-        </ul>
-    </nav>
-
-    <div class="reservation-card">
-      <h2>Reserve Your Table</h2>
-
-      <div class="menu-tables-link-container">
+  <div class="menu-tables-link-container">
     <p style="margin-bottom: 10px; color: #666;">Plan your visit:</p>
-    <a href="menu.html" target="_blank" class="btn-menu"> View Menu</a>
-    <a href="tables.html" target="_blank" class="btn-tables"> View Tables</a>
+    <a href="menu.html" target="_blank" class="btn-menu">View Menu</a>
+    <a href="tables.html" target="_blank" class="btn-tables">View Tables</a>
+  </div>
+
+  <!-- FORM -->
+  <form id="reservationForm">
+
+    <div class="row">
+      <div class="form-group">
+        <label>Guests</label>
+        <input type="number" min="1" max="20" value="2" required>
+      </div>
+
+      <div class="form-group">
+        <label>Table No. (Optional)</label>
+        <input type="number" placeholder="e.g. 05">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="tel" placeholder="010-xxxx-xxxx" required>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" required>
+      </div>
+
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Preference</label>
+      <select required>
+        <option>Indoors</option>
+        <option>Outdoors</option>
+        <option>Main Hall</option>
+      </select>
+    </div>
+
+    <!-- ORDER TYPE -->
+    <div class="form-group">
+      <label>Food Order Type</label>
+      <select id="orderType" required>
+        <option value="">Select order type</option>
+        <option value="preorder">Pre-order</option>
+        <option value="restaurant">Order at Restaurant</option>
+      </select>
+    </div>
+
+    <!-- PREORDER SECTION -->
+    <div id="preorderSection" style="display:none;">
+
+      <div class="form-group">
+        <label>Pre-order Food</label>
+        <select id="foodItem">
+          <option value="">Select Item</option>
+        </select>
+
+        <input type="number" id="foodQty" min="1" placeholder="Quantity">
+
+        <button type="button" class="btn-menu" onclick="addItem()">Add Item</button>
+      </div>
+
+      <div class="form-group">
+        <label>Order Summary</label>
+        <ul id="orderList"></ul>
+      </div>
+
+      <div class="form-group">
+        <label>Total Food Price</label>
+        <input type="text" id="foodTotal" readonly>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn-submit">Confirm Booking</button>
+  </form>
 </div>
 
-<form action="success.html">
-    <div class="row">
-        <div class="form-group">
-            <label>Guests</label>
-            <input type="number" min="1" max="20" value="2">
-        </div>
-        
-        <div class="form-group">
-            <label>Table No. (Optional)</label>
-            <input type="number" placeholder="e.g. 05">
-        </div>
-    </div>
+<!-- MENU DATA -->
+<script>
+const menu = {
+  "Cheese Pizza": 80,
+  "Beef Burger": 70,
+  "Alfredo Pasta": 110,
+  "Chocolate Cake": 40,
+  "Donuts": 35,
+  "Brownie": 60,
+  "Juice": 30,
+  "Coffee": 25,
+  "Milkshake": 80
+};
+</script>
 
+<!-- PREORDER LOGIC -->
+<script>
+let preorder = [];
+let foodTotal = 0;
 
-      <form action="#">
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" placeholder="Enter your full name" required />
-        </div>
+const foodSelect = document.getElementById("foodItem");
+for (let item in menu) {
+  let option = document.createElement("option");
+  option.value = item;
+  option.text = `${item} - ${menu[item]} EGP`;
+  foodSelect.appendChild(option);
+}
 
-        <div class="form-group">
-          <label>Phone</label>
-          <input type="tel" placeholder="010-xxxx-xxxx" required />
-        </div>
+function addItem() {
+  let item = foodSelect.value;
+  let qty = Number(document.getElementById("foodQty").value);
 
-        <div class="row">
-          <div class="form-group">
-            <label>Date</label>
-            <input type="date" required />
-          </div>
-          <div class="form-group">
-            <label>Time</label>
-            <input type="time" required />
-          </div>
-        </div>
+  if (!item || !qty) {
+    alert("Please select item and quantity");
+    return;
+  }
 
-        
+  let price = menu[item] * qty;
+  foodTotal += price;
 
-        <div class="form-group">
-          <label>Preference</label>
-          <select>
-            <option>Indoors</option>
-            <option>Outdoors </option>
-            <option>MainHall</option>
-          </select>
-        </div>
+  preorder.push({ item, qty, price });
 
-        <div class="form-group">
-          <label>Pre-order Food (Optional)</label>
-          <textarea
-            rows="3"
-            placeholder="Example: 1x Grilled Salmon, 2x Caesar Salad..."
-          ></textarea>
-        </div>
+  document.getElementById("foodTotal").value = foodTotal + " EGP";
 
-        <button type="submit" class="btn-submit">Confirm Booking</button>
-      </form>
-    </div>
-  </body>
+  let li = document.createElement("li");
+  li.textContent = `${item} x${qty} = ${price} EGP`;
+  document.getElementById("orderList").appendChild(li);
 
-  <script>
-document.querySelector("form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  foodSelect.value = "";
+  document.getElementById("foodQty").value = "";
+}
+</script>
 
-    let reservations = JSON.parse(localStorage.getItem("reservations") || "[]");
+<!-- SHOW / HIDE PREORDER -->
+<script>
+document.getElementById("orderType").addEventListener("change", function () {
+  const section = document.getElementById("preorderSection");
 
-    let newReservation = {
-        userName: document.querySelector("input[placeholder='Enter your full name']").value,
-        phone: document.querySelector("input[placeholder='010-xxxx-xxxx']").value,
-        guests: document.querySelector("input[min='1']").value,
-        tableName: document.querySelector("input[placeholder='e.g. 05']").value || "Not Selected",
-        date: document.querySelector("input[type='date']").value,
-        time: document.querySelector("input[type='time']").value,
-        note: document.querySelector("textarea").value
-    };
-
-    reservations.push(newReservation);
-    localStorage.setItem("reservations", JSON.stringify(reservations));
-
-    window.location.href = "success.html";
+  if (this.value === "preorder") {
+    section.style.display = "block";
+  } else {
+    section.style.display = "none";
+    preorder = [];
+    foodTotal = 0;
+    document.getElementById("orderList").innerHTML = "";
+    document.getElementById("foodTotal").value = "";
+  }
 });
 </script>
 
+<!-- SUBMIT -->
+<script>
+document.getElementById("reservationForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
+  let orderType = document.getElementById("orderType").value;
+
+  if (orderType === "preorder" && preorder.length === 0) {
+    alert("Please add at least one item to pre-order");
+    return;
+  }
+
+  let reservation = {
+    userName: document.querySelector("input[placeholder='Enter your full name']").value,
+    phone: document.querySelector("input[placeholder='010-xxxx-xxxx']").value,
+    guests: document.querySelector("input[min='1']").value,
+    tableName: document.querySelector("input[placeholder='e.g. 05']").value || "Not Selected",
+    date: document.querySelector("input[type='date']").value,
+    time: document.querySelector("input[type='time']").value,
+    preference: document.querySelector("select").value,
+
+    orderType: orderType,
+    preorder: orderType === "preorder" ? preorder : [],
+    preorderPrice: orderType === "preorder" ? foodTotal : 0
+  };
+
+  localStorage.setItem("pendingReservation", JSON.stringify(reservation));
+  window.location.href = "payment.html";
+});
+</script>
+
+</body>
 </html>

@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("../images/back1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Payment Card */
+.payment-card {
+  background-color: white;
+  padding: 45px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.payment-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Reservation Summary */
+.reservation-summary {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #fafafa;
+}
+
+.reservation-summary p {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.reservation-summary span {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Total Price */
+.total-price {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #e67e22;
+  margin: 20px 0;
+}
+
+/* Form Elements */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #e67e22;
+}
+
+/* Card Info */
+.card-info {
+  margin-top: 10px;
+}
+
+/* Confirm Button */
+.btn-confirm-payment {
+  width: 100%;
+  padding: 15px;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.btn-confirm-payment:hover {
+  background-color: #d35400;
+}
